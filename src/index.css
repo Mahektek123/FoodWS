@@ -11,3 +11,95 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background-color: #f4f4f4;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.alert-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  /* Higher z-index */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 50px 80px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.forget-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  /* Higher z-index */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 50px 100px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.drop-area {
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+@media (Min-width: 992px) {
+  #navbarNav{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+#proCon{
+  width: 100%;
+  display: flex;
+  /* background-color: black;  */
+}
+#ProfilePic{
+  width: 50%;
+}
+
+#Info{
+  width: 50%;
+}
+@media (Max-width: 767px) {
+  #proCon{
+    display: block;
+  } 
+  
+  #ProfilePic{
+    width: 100%;
+    height: 334px;
+  }
+
+  #Info{
+    width: 100%;
+  }
+
+  #ProfileImg{
+    width: "50%";
+    height: "70%";
+    border: "1px solid black" 
+  }
+}
+
+.image-preview {
+  margin-top: 20px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
