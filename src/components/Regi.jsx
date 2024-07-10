@@ -49,17 +49,20 @@ const Regi = () => {
                 sessionStorage.setItem("Ans", secAnsElement.value);
                 navigate('/')
                 let logOut = document.getElementsByClassName("afterLogin")
-                logOut.style.display = ""
+                // logOut.style.display = ""
                 console.log("User insert")
             }
 
             if (rData.Message === "There is an Error") {
                 const alertContainer2 = document.querySelector('#uExists')
-                alertContainer2.style.display = 'block';
+                if(alertContainer2.style){
 
-                setTimeout(() => {
-                    alertContainer2.style.display = 'none';
-                }, 3000);
+                    alertContainer2.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        alertContainer2.style.display = 'none';
+                    }, 3000);
+                }
             }
         }catch(err){
             console.log("Error : ", err)
@@ -77,7 +80,7 @@ const Regi = () => {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="card-header">
-                                <h3 className="text-center">Social Point - Registration</h3>
+                                <h3 className="text-center">Registration</h3>
                             </div>
                             <div className="card-body">
                                 <form onSubmit={sub}>

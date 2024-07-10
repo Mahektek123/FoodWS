@@ -41,13 +41,15 @@ const Login = () => {
     });
 
     const rData = await response.json();
-    console.log(rData)
+    // console.log(rData)
 
-    if (rData.message === "Loged In") {
+    if (rData.Message === "Loged In successfull") {
       sessionStorage.setItem("UserName", nameElement.value);
-      sessionStorage.setItem("Que", rData.Que);
-      sessionStorage.setItem("Ans", rData.Ans);
-      window.location.href = "/";
+      sessionStorage.setItem("Que", rData.Data[0].securityQuestion);
+      sessionStorage.setItem("Ans", rData.Data[0].securityAnswer);
+      navigate("/")
+    } else {
+      userNotFound(rData.Message)
     }
   };
 
@@ -70,7 +72,6 @@ const Login = () => {
 
     const uNameElement = document.getElementById("nameFrg")
     const uNameVal = uNameElement.value;
-    // let uNameG = uNameVal;
     setUNameG(uNameVal)
 
     const data = {
@@ -122,7 +123,6 @@ const Login = () => {
 
   const UpdPsw = async (e) => {
     e.preventDefault();
-
     const newPswElement = document.getElementById("newPsw")
     const new_psw = newPswElement.value;
 
@@ -159,7 +159,7 @@ const Login = () => {
           <div className="col-md-6">
             <div className="card">
               <div className="card-header">
-                <h3 className="text-center">Social Point - Log In</h3>
+                <h3 className="text-center">Log In</h3>
               </div>
               <div className="card-body">
                 <form onSubmit={sub}>
@@ -212,7 +212,7 @@ const Login = () => {
       </form>
 
       <div className="alert-container" id='uExists' style={{ display: "none" }}>
-        <p>User does Not Exist</p>
+        <p></p>
       </div>
 
       <div className="alert-container" id='vali' style={{ display: "none" }}>
