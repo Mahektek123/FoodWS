@@ -25,9 +25,9 @@ const Navbar = () => {
                                     <button className='btn' onClick={() => navigate('/')}>Home</button>
                                 </li>
                                 <li className="nav-item afterLogin">
-                                    <button className='btn position-relative' onClick={() => navigate('/About')}>About
-                                        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                            <span class="visually-hidden">New alerts</span>
+                                    <button className='btn position-relative' onClick={() => navigate('/About')}>My Cart
+                                        <span id='bedge' className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span className="visually-hidden">New alerts</span>
                                         </span>
                                     </button>
                                 </li>

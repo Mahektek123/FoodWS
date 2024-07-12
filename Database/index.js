@@ -154,6 +154,63 @@ app.get("/GetFoods", async (req, res) => {
     }
 })
 
+app.post("/CartCount", async (req, res) => {
+    let UserName = req.body.uName
+    try {
+        const count = await User.find({UserName:UserName})
+        if(count.length === 0){
+            res.send({"Message": "User Not Found"})
+        } else {
+            res.send({"Count":(count[0].Cart).length})
+        }
+    } catch (error) {
+        res.send({"Error": error})
+    }
+})
+
+app.post("/AddToCart", async(req, res)=>{
+    const UserName = req.body.uName
+    const food_ID = req.body.food_ID
+    try {
+        const result = await User.updateOne({UserName:UserName},{$push: {Cart: food_ID}})
+        if(result.matchedCount === 1){
+            if(result.modifiedCount === 1){
+                res.send({"Message":"Added"})
+            } else {
+                res.send({"Message":"there is an Error"})
+            } 
+        } else {
+            res.send({"Message":"there is an Error"})
+        }
+    } catch (error) {
+        res.send({"Error":error.message}) 
+    }
+})
+
+app.post("/GetCart", async(req, res)=>{
+    const UserName = req.body.uName
+    try {
+        const result = await User.find({UserName:UserName})
+        if(result == 0){
+            res.send({"Message":"There is an Error"})
+        } else {
+            res.send(result[0].Cart)
+        }
+    } catch (error) {
+        res.send({"Message":error.message})
+    }
+})
+
+app.post("/GetCartFoods", async(req, res)=>{
+    const food_ID = req.body.food_ID
+    try {
+        const result = await Food.find({Food_ID: {$in: food_ID}})
+        res.send(result)
+    } catch (error) {
+        res.send({Error:error.message})
+    }
+})
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

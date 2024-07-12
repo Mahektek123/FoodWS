@@ -19,9 +19,26 @@ const Home = () => {
             'Content-Type': 'application/json'
           }
         })
-
         const rData = await response.json();
         setFoods(rData.Data)
+
+        const response2 = await fetch("http://localhost:3000/CartCount", {
+          method: "Post",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            uName: sessionStorage.getItem("UserName")
+          })
+        })
+        const rData2 = await response2.json();
+        if(rData2.Count === 0){
+          const bedge = document.getElementById("bedge")
+          bedge.style.display = "none"
+        } else {
+          const bedge = document.getElementById("bedge")
+          bedge.style.display = "block"
+        }
 
       } catch (error) {
 
