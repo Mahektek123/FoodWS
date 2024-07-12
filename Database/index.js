@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require('cors');
+const { type } = require("@testing-library/user-event/dist/type");
 
 const app = express();
 const port = 3000;
@@ -32,10 +33,35 @@ const UserSchema = new Schema({
     securityAnswer: {
         type: String,
         require: true
+    },
+    Cart:{
+        type: []
     }
 })
 
+const FoodSchema = new Schema({
+    Food_Name:{
+        type: String
+    }, 
+    Food_ID:{
+        type: Number
+    }, 
+    Food_Price: {
+        type: Number
+    }, 
+    Food_Type: {
+        type: String
+    },
+    Food_Quantity: {
+        type: Number
+    },
+    Food_Image: {
+        type: String
+    }
+}, { collection: 'foods' })
+
 const User = mongoose.model('User', UserSchema)
+const Food = mongoose.model("Food", FoodSchema)
 
 app.post("/newUser", async (req, res) => {
     var UserName = req.body.name
@@ -78,7 +104,7 @@ app.post("/login", async (req, res) => {
 })
 
 app.post("/updatePassword", async (req, res)=>{
-    var UserName = req.body.uName
+    var UserName = req.body.uName   
     var newPassword = req.body.new_psw
 
     try{
@@ -98,6 +124,33 @@ app.post("/updatePassword", async (req, res)=>{
         }
     }catch (error) {
         res.send({"Message": "There is an Error"})
+    }
+})
+
+app.post("/forgetPSW", async (req,res)=>{
+    var UserName = req.body.UserName
+    try {
+        const result = await User.findOne({"UserName":UserName})
+        if(result){
+            res.send({"Data":result,"Message":"User Found"})
+        }
+
+        if(!result){
+            res.send({"Message":"User Not Found"})
+        }
+        
+    } catch (error) {
+        res.send({"Error":error})
+    }
+
+})
+
+app.get("/GetFoods", async (req, res) => {
+    try {
+        const foods = await Food.find()
+        res.send({"Data":foods, "Message":"Data fetched"})
+    } catch (error) {
+        res.send({"Message":"There is an Error"})
     }
 })
 

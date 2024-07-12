@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 
-const Login = () => { 
+const Login = () => {
 
   const navigate = useNavigate();
 
-    const [dataG, setDataG] = useState('')
-    const [uNameG, setUNameG] = useState('')
+  const [dataG, setDataG] = useState('')
+  const [uNameG, setUNameG] = useState('')
 
   const sub = async (e) => {
     e.preventDefault();
@@ -49,7 +49,7 @@ const Login = () => {
       sessionStorage.setItem("Ans", rData.Data[0].securityAnswer);
       navigate("/")
     } else {
-      userNotFound(rData.Message)
+      AlertContainer(rData.Message)
     }
   };
 
@@ -58,7 +58,7 @@ const Login = () => {
     alertContainer.style.display = 'block';
   };
 
-  const userNotFound = (dData) => {
+  const AlertContainer = (dData) => {
     const alertContainer = document.querySelector('.alert-container')
     alertContainer.style.display = 'block';
     alertContainer.innerText = dData;
@@ -88,17 +88,18 @@ const Login = () => {
 
     const rData = await response.json();
 
-    if (rData.message === "User Not Found") {
-      userNotFound("User Not Found");
-    } else {
+    if (rData.Message === "User Not Found") {
+      AlertContainer("User Not Found");
+    }
+
+    if (rData.Message === "User Found") {
       const frgFrm = document.getElementById("frgFrm")
       frgFrm.style.display = "none";
       const ansCheckFrm = document.getElementById("ansCheckFrm")
       ansCheckFrm.style.display = "block";
       const queLbl = document.getElementById("queLbl")
-      queLbl.innerText = rData.Que;
-    //   let dataG = rData.ans;
-      setDataG(rData.ans)
+      queLbl.innerText = rData.Data.securityQuestion;
+      setDataG(rData.Data.securityAnswer)
     }
   };
 
@@ -123,28 +124,39 @@ const Login = () => {
 
   const UpdPsw = async (e) => {
     e.preventDefault();
+
     const newPswElement = document.getElementById("newPsw")
     const new_psw = newPswElement.value;
 
-    const data = {
-      new_psw: new_psw,
-      uName: uNameG
-    };
+    const newPswAGElement = document.getElementById("newPswR")
+    const new_psw_AG = newPswAGElement.value;
 
-    const response = await fetch(`http://localhost:3000/updatePassword`, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
+    if (new_psw !== new_psw_AG) {
+      AlertContainer("Both Password Must Be Same")
+    } else {
 
-    const rData = await response.json();
 
-    const upPassword = document.getElementById("upPassword");
-    upPassword.style.display = "none";
 
-    userNotFound(rData.message);
+      const data = {
+        new_psw: new_psw,
+        uName: uNameG
+      };
+
+      const response = await fetch(`http://localhost:3000/updatePassword`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      const rData = await response.json();
+
+      const upPassword = document.getElementById("upPassword");
+      upPassword.style.display = "none";
+
+      AlertContainer(rData.Message);
+    }
   };
 
   const divert = () => {
@@ -154,7 +166,7 @@ const Login = () => {
 
   return (
     <>
-        <div className="container">
+      <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6">
             <div className="card">
@@ -202,11 +214,11 @@ const Login = () => {
       <form className='forget-container' onSubmit={UpdPsw} style={{ display: "none" }} id='upPassword'>
         <div className="form-group">
           <label htmlFor="newPsw">Enter New Password:</label>
-          <input className="form-control" type='text' id='newPsw' autoComplete='Password' required />
+          <input className="form-control" type='password' id='newPsw' autoComplete='Password' required />
         </div>
         <div className="form-group">
           <label htmlFor="newPswR">Enter New Password Again:</label>
-          <input className="form-control" type='text' id='newPswR' autoComplete='newPassword' required />
+          <input className="form-control" type='password' id='newPswR' autoComplete='newPassword' required />
         </div>
         <button className="btn btn-primary btn-block" id="UpPsw">Set Password</button>
       </form>

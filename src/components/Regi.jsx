@@ -48,8 +48,6 @@ const Regi = () => {
                 sessionStorage.setItem("Que", secQueElement.value);
                 sessionStorage.setItem("Ans", secAnsElement.value);
                 navigate('/')
-                let logOut = document.getElementsByClassName("afterLogin")
-                // logOut.style.display = ""
                 console.log("User insert")
             }
 

@@ -7,7 +7,7 @@ import Home from './components/Home'
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Regi from './components/Regi';
-
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/Login" element={<Login/>} />
           <Route path="/Registration" element={<Regi/>} />
+          <Route path="/Profile" element={<Profile/>} />
         </Routes>
       </div>
     </Router>
