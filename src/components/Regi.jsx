@@ -32,7 +32,6 @@ const Regi = () => {
             Que: secQueElement.value,
             Ans: secAnsElement.value
         };
-        console.log(form_data)
         try {
             const response = await fetch(`http://localhost:3000/newUser`, {
                 method: 'POST',
@@ -42,7 +41,6 @@ const Regi = () => {
                 body: JSON.stringify(form_data)
             });
             const rData = await response.json();
-            console.log(rData)
             if (!rData.Message) {    
                 sessionStorage.setItem("UserName", nameElement.value);
                 sessionStorage.setItem("Que", secQueElement.value);

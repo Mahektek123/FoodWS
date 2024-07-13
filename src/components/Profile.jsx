@@ -11,7 +11,7 @@ const Profile = () => {
             UserName: user
         }
 
-        const response = await fetch(`${window.location.origin}/ImgBack`, {
+        const response = await fetch(`http://localhost:3000/ImgBack`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ const Profile = () => {
             secAnsUp: secAnsUp
         }
 
-        const response = await fetch(`${window.location.origin}/UpSec`, {
+        const response = await fetch(`http://localhost:3000/UpSec`, {
             method: "Post",
             headers: {
                 "Content-Type": "application/json"
@@ -93,10 +93,6 @@ const Profile = () => {
 
     }
 
-    // const setDP = () => {
-    //     document.getElementById("imgPro").click()
-    // }
-
     const newPswSet = async (e) => {
         e.preventDefault()
         let oldPsw = document.getElementById("oldPsw")?.value
@@ -112,7 +108,7 @@ const Profile = () => {
                 newPsw: newPsw
             }
 
-            let response = await fetch(`${window.location.origin}/UpPsw`, {
+            let response = await fetch(`http://localhost:3000/UpPsw`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -138,7 +134,7 @@ const Profile = () => {
                 newName: newName
             }
 
-            let response = await fetch(`${window.location.origin}/UpName`, {
+            let response = await fetch(`http://localhost:3000/UpName`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -174,7 +170,7 @@ const Profile = () => {
                 UserName: UserName
             }
 
-            let response = await fetch(`${window.location.origin}/setDP`,{
+            let response = await fetch(`http://localhost:3000/setDP`,{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

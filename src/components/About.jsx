@@ -25,7 +25,6 @@ const About = () => {
           return occurrences;
         };
         const occurrences = countOccurrences(array);
-        console.log(occurrences)
         let keys = Object.keys(occurrences)
 
         const response2 = await fetch("http://localhost:3000/GetCartFoods", {
@@ -33,18 +32,12 @@ const About = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({food_ID:keys})
+          body: JSON.stringify({ food_ID: keys })
         })
 
         const rData2 = await response2.json();
         setFoods(rData2)
         setTotCart(occurrences)
-
-        keys.forEach(element => {
-          for (let i = 0; i < occurrences[element+""]; i++) {
-            console.log(element)
-          }
-        });
 
 
       } catch (error) {
@@ -63,18 +56,21 @@ const About = () => {
       <div className="d-flex justify-content-center container ">
         <div className="row" id="FoodData">
           {
-          Foods.length > 0 && TotCart ? (
-            Foods.map((data)=>(
-              <FoodCard key={data.Food_ID} Food_ID={data.Food_ID} Food_Name={data.Food_Name} Food_Qty={TotCart[data.Food_ID]} Food_Price={data.Food_Price} Food_Type={data.Food_Type}/>
-            ))
-          ) : (
-            <div>Loading.....</div>
-          )
-        }
+            Foods.length > 0 && TotCart ? (
+              Foods.map((data) => (
+                <FoodCard key={data.Food_ID} Food_ID={data.Food_ID} Food_Name={data.Food_Name} Food_Qty={TotCart[data.Food_ID]} Food_Price={data.Food_Price} Food_Type={data.Food_Type} />
+              ))
+            ) : (
+              <div>
+                {!TotCart ? "Loading..." : "Cart is Empty..." }
+                
+              </div>
+            )
+          }
         </div>
       </div>
     </>
-  )
-}
+    )
+  }
 
-export default About
+  export default About;
