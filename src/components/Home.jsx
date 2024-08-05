@@ -1,74 +1,56 @@
-import { React, useEffect, useState } from 'react'
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
+import IMG1 from './image1.jpg';
+import IMG2 from './image2.jpg';
+import IMG3 from './image3.jpg';
+import IMG4 from './image4.jpg';
+import IMG5 from './image5.jpg';
 import { useNavigate } from 'react-router-dom';
-import FoodCard from './FoodCard';
-
-const Home = () => {
+function Home() {
   const navigate = useNavigate();
-  const [Foods, setFoods] = useState({});
-  useEffect(() => {
-    if (!sessionStorage.getItem("UserName")) {
-      navigate('/Login')
-    }
-
-    const fetchData = async () => {
-
-      try {
-        const response = await fetch("http://localhost:3000/GetFoods", {
-          method: "Get",
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        const rData = await response.json();
-        setFoods(rData.Data)
-
-        const response2 = await fetch("http://localhost:3000/CartCount", {
-          method: "Post",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            uName: sessionStorage.getItem("UserName")
-          })
-        })
-        const rData2 = await response2.json();
-        if(rData2.Count === 0){
-          const bedge = document.getElementById("bedge")
-          bedge.style.display = "none"
-        } else {
-          const bedge = document.getElementById("bedge")
-          bedge.style.display = "block"
-        }
-
-      } catch (error) {
-
-      }
-    }
-
-    fetchData()
-    return () => {
-    }
-    // eslint-disable-next-line
-  }, [])
+  const goToOrderPage = () => {
+    navigate('/order');
+  };
 
   return (
-    <>
-     <div className="d-flex justify-content-center container ">
-      <div className="row" id="FoodData">
-        {
-          Foods.length > 0 ? (
-            Foods.map((data)=>(
-              // console.log(data.Food_Name)
-              <FoodCard key={data.Food_ID} Food_ID={data.Food_ID} Food_Name={data.Food_Name} Food_Price={data.Food_Price} Food_Type={data.Food_Type}/>
-            ))
-          ) : (
-            <div>Loading.....</div>
-          )
-        }
+    <div className="carousel-container">
+      <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img src={IMG1} className="imgs" alt="image1" />
+          </div>
+          <div className="carousel-item">
+            <img src={IMG2} className="imgs" alt="image2" />
+          </div>
+          <div className="carousel-item">
+            <img src={IMG3} className="imgs" alt="image3" />
+          </div>
+          <div className="carousel-item">
+            <img src={IMG4} className="imgs" alt="image4" />
+          </div>
+          <div className="carousel-item">
+            <img src={IMG5} className="imgs" alt="image5" />
+          </div>
+        </div>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div className="carousel-overlay">
+        <div className="carousel-text">
+          <h2>Deals of the Day</h2>
+          <button className="btn btn-danger" onClick={goToOrderPage}>Order Now</button>
+        </div>
       </div>
     </div>
-    </>
-  )
+  );
 }
 
-export default Home
+export default Home;

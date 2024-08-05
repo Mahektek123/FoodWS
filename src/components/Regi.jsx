@@ -71,14 +71,7 @@ const Regi = () => {
 
   return (
     <>
-         <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-6">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3 className="text-center">Registration</h3>
-                            </div>
-                            <div className="card-body">
+         <div className="container shadow-danger p-4" style={{ maxWidth: '400px', borderRadius: '15px', boxShadow: '0 4px 8px rgba(255, 0, 0, 0.5)', border: '2px solid rgba(255, 0, 0, 0.5)', margin: '10px auto' }}>
                                 <form onSubmit={sub}>
                                     <div className="form-group">
                                         <label htmlFor="name">Username</label>
@@ -103,13 +96,9 @@ const Regi = () => {
                                     <span onClick={divert} style={{ cursor: 'pointer', color: 'blue' }}>Already Have An Account?</span>
                                     <br />
                                     <center>
-                                        <button id="btn" className="btn btn-primary btn-block">Register</button>
+                                        <button id="btn" className="btn btn-danger btn-block">Register</button>
                                     </center>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div className="alert-container" id='uExists' style={{ display: "none" }}>
                     <p>User already Exists</p>
                 </div>

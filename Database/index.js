@@ -45,7 +45,7 @@ const FoodSchema = new Schema({
         type: Number
     },
     Food_Price: {
-        type: Number
+        type: String
     },
     Food_Type: {
         type: String
