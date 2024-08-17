@@ -15,7 +15,11 @@ const Navbar = () => {
     };
 
     return (
+<<<<<<< HEAD
         <nav className="navbar navbar-expand-lg navbar-dark border-bottom sticky-top mb-1" style={{
+=======
+        <nav className="navbar navbar-expand-lg navbar-dark border-bottom sticky-top" style={{
+>>>>>>> b710c4d04b8a03e0b6cac6de3d093a06c430c2e4
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
             backdropFilter: 'blur(10px)'
         }}>

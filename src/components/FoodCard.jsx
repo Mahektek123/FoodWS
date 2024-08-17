@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import foodIMG from './food.jpeg';
 import Veg from './veg.png';
 import NonVeg from './nonVeg.png';
+<<<<<<< HEAD
 
 const FoodCard = (props) => {
     const [quantity, setQuantity] = useState(props.Food_Qty || 0);
@@ -17,6 +18,19 @@ const FoodCard = (props) => {
         document.getElementById("FoodData").innerHTML = "Cart is Empty...";
         document.getElementById("bedge").style.display = "none";
     };
+=======
+
+const FoodCard = (props) => {
+    const [quantity, setQuantity] = useState(props.Food_Qty || 0);
+
+    useEffect(() => {
+        const cardElement = document.getElementById(props.Food_ID);
+        if (cardElement) {
+            cardElement.classList.add('fade-in');
+        }
+    }, [props.Food_ID]);
+
+>>>>>>> b710c4d04b8a03e0b6cac6de3d093a06c430c2e4
     const decreaseQuantity = async (food_ID) => {
         try {
             const sData = {
@@ -34,6 +48,13 @@ const FoodCard = (props) => {
             if (response.ok) {
                 setQuantity(quantity - 1);
 
+<<<<<<< HEAD
+=======
+                const lastItemRemove = () => {
+                    document.getElementById("FoodData").innerHTML = "Cart is Empty...";
+                    document.getElementById("bedge").style.display = "none";
+                };
+>>>>>>> b710c4d04b8a03e0b6cac6de3d093a06c430c2e4
 
                 const rData = await response.json();
                 if (quantity === 1) {
@@ -103,12 +124,19 @@ const FoodCard = (props) => {
 
     const paymentform = async () => {
         try {
+<<<<<<< HEAD
             const date = new Date()
             const sData = {
                 uName: sessionStorage.getItem("UserName"),
                 food_ID: props.Food_ID,
                 paymentMethod: "Cash on Delivery",
                 Time: date
+=======
+            const sData = {
+                uName: sessionStorage.getItem("UserName"),
+                food_ID: props.Food_ID,
+                paymentMethod: "Cash on Delivery"
+>>>>>>> b710c4d04b8a03e0b6cac6de3d093a06c430c2e4
             };
             const response = await fetch("http://localhost:3000/CompleteOrder", {
                 method: "POST",
@@ -120,6 +148,7 @@ const FoodCard = (props) => {
 
             if (response.ok) {
                 showAlert("Order placed successfully with Cash on Delivery");
+<<<<<<< HEAD
                 fetch("http://localhost:3000/EmptyCart", {
                     method: "POST",
                     headers: {
@@ -130,6 +159,8 @@ const FoodCard = (props) => {
                 setTimeout(() => {
                     lastItemRemove()
                 }, 2000);
+=======
+>>>>>>> b710c4d04b8a03e0b6cac6de3d093a06c430c2e4
             } else {
                 showAlert("Error placing order");
             }
