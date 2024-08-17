@@ -56,7 +56,7 @@ const About = () => {
   }, []);
 
   return (
-    <>
+    <><div style={{minHeight:"630px"}}>
       <div className="d-flex justify-content-center container">
         <div className="row d-flex justify-content-center container text-danger" id="FoodData" style={{minHeight:"400px"}}>
           {
@@ -72,7 +72,7 @@ const About = () => {
                 />
               ))
             ) : (
-              <div className="d-flex justify-content-center container text-danger ">
+              <div className="d-flex justify-content-center container text-white ">
 
                 {!TotCart ? "Loading..." :"Cart is Empty..."}
                 
@@ -80,6 +80,7 @@ const About = () => {
             )
           }
         </div>
+      </div>
       </div>
     </>
   )

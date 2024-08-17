@@ -1,4 +1,5 @@
 import React from 'react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 
 export default function Footer() {
@@ -10,22 +11,22 @@ export default function Footer() {
         </div>
 
         <div>
-          <a href='' className='me-4 text-reset'>
+          <a href='https://www.facebook.com' className='me-4 text-reset'>
             <MDBIcon fab icon="facebook-f" />
           </a>
-          <a href='' className='me-4 text-reset'>
+          <a href='https://www.twitter.com' className='me-4 text-reset'>
             <MDBIcon fab icon="twitter" />
           </a>
-          <a href='' className='me-4 text-reset'>
+          <a href='https://www.google.com' className='me-4 text-reset'>
             <MDBIcon fab icon="google" />
           </a>
-          <a href='' className='me-4 text-reset'>
+          <a href='https://www.instagram.com' className='me-4 text-reset'>
             <MDBIcon fab icon="instagram" />
           </a>
-          <a href='' className='me-4 text-reset'>
+          <a href='https://www.linkedin.com' className='me-4 text-reset'>
             <MDBIcon fab icon="linkedin" />
           </a>
-          <a href='' className='me-4 text-reset'>
+          <a href='https://www.github.com' className='me-4 text-reset'>
             <MDBIcon fab icon="github" />
           </a>
         </div>

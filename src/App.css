@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: rgb(92, 227, 245);
 }
 
 @keyframes App-logo-spin {
@@ -36,7 +36,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 .alert-container {
   position: fixed;
@@ -50,13 +49,14 @@
   padding: 50px 80px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
-.card {
+/* .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform, box-shadow;
-}
+  background-color: #e64a19;
+} */
 
 .card:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -83,16 +83,16 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: 0;
-  margin: 5 auto;
+  margin: auto;
 }
 
-.card {
+/* .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform, box-shadow;
-  margin: 15px; 
+  margin: 4px; 
   width: 250px; 
   height: auto;
-}
+} */
 
 @media (max-width: 1200px) {
   .card {
@@ -102,7 +102,7 @@
 
 @media (max-width: 768px) {
   .card {
-      width: 180px;
+      width: 100px;
   }
 }
 
@@ -118,9 +118,10 @@
   margin: 15px;
 }
 
-.navbar {
-  background-color: black; 
+/* .navbar {
+  background-color: rgba(255, 255, 255, 0.4); 
   color: white;
+  backdrop-filter: blur(10px);
   padding: 0.5rem 1rem; 
 }
 
@@ -140,7 +141,7 @@
 
 .navbar-toggler-icon {
   background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath fill="none" stroke="%23fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/%3E%3C/svg%3E');
-}
+} */
 
 .btn-dark {
   color: white;
@@ -174,7 +175,7 @@
   left: 0;
   right: 0;
   padding: 1rem;
-  background-color: #333;
+  background-color: #000000a4;
   border-radius: 5px;
   z-index: 1000;
 }
@@ -184,11 +185,15 @@
 }
 .carousel-container {
   position: relative;
+  height: 80vh;
 }
 
-.carousel-inner img {
+.carousel-inner img{
   width: 100%;
-  height: auto;
+  height: 100%;
+}
+.carousel{
+  height: 100vh;
 }
 
 .carousel-overlay {
@@ -249,7 +254,7 @@ label {
   margin-bottom: 5px;
   font-size: 15px;
   font-weight: 600;
-  color: #333;
+  color: #fbf7f7;
 }
 
 .btn-block {
@@ -272,7 +277,7 @@ label {
 .alert-container p {
   margin: 0;
   font-size: 16px;
-  color: #333;
+  color: #faf6f6;
 }
 .shadow-danger {
   box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
@@ -285,15 +290,20 @@ label {
   border-color: #dc3545 !important;
 }
 .card {
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.5s;
 }
 
 .card:hover {
-  background-color: rgba(255, 0, 0, 0.518); /* Light red background */
+  background-color: rgba(0, 0, 0, 0.516);
   color: white;
 }
 
 .card:hover .card-title,
 .card:hover .card-text {
   color: white;
+}
+#root {
+  background-image: url('./components/backgroundimg.jpg');
+  background-size: cover;
+  background-position: center;
 }

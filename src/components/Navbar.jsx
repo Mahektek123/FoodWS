@@ -15,7 +15,10 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom">
+        <nav className="navbar navbar-expand-lg navbar-dark border-bottom sticky-top" style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+            backdropFilter: 'blur(10px)'
+        }}>
             <div className="container-fluid">
                 <img src={logo} style={{ width: "75px", height: "45px" }} alt="Logo" />
                 <span className="navbar-brand text-white fs-2 fw-bold ms-2">YumYard</span>
@@ -43,7 +46,7 @@ const Navbar = () => {
                         <li className="nav-item position-relative">
                             <button className='btn text-white' onClick={() => navigate('/about')}>
                                 <FaCartPlus />
-                                <span id='bedge' className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ display: "none" , borderRadius:"10px" ,padding:"5px" }}>
+                                <span id='bedge' className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ display: "none", borderRadius: "10px", padding: "5px" }}>
                                     <span className="visually-hidden">New alerts</span>
                                 </span>
                             </button>

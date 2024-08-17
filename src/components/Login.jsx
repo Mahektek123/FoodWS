@@ -161,7 +161,16 @@ const Login = () => {
 
   return (
     <>
-      <div className="container shadow-danger p-4" style={{ maxWidth: '400px', borderRadius: '15px', boxShadow: '0 4px 8px rgba(255, 0, 0, 0.5)', border: '2px solid rgba(255, 0, 0, 0.5)', margin: '10px auto' }}>
+      <div className="container" style={{ padding: '140px 1px',
+        margin: '20px auto',
+        borderRadius: '10px',
+        boxShadow: '8px 8px 8px rgba(0, 0, 0, 0.9)',
+        border: '2px solid rgba(0, 0, 0, 0.9)',
+        transition: 'box-shadow 0.3s ease-in-out',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',  
+        color: '#fff', 
+        maxWidth: '500px',
+        minHeight: "85vh" }}>
         <form onSubmit={sub}>
           <div className="form-group mb-3">
             <label htmlFor="name" className="form-label">Username</label>
@@ -172,38 +181,38 @@ const Login = () => {
             <input className="form-control border-danger" type='password' id='psw' autoComplete='current-password' required />
           </div>
           <div className='d-flex justify-content-between mb-4'>
-            <button type='button' className="btn btn-danger me-2" onClick={forget}>Forget Password?</button>
-            <button type='button' className="btn btn-danger ms-2" onClick={divert} style={{ cursor: "pointer" }}>New User?</button>
+            <button type='button' className="btn btn-warning me-2" onClick={forget}>Forget Password?</button>
+            <button type='button' className="btn btn-warning ms-2" onClick={divert} style={{ cursor: "pointer" }}>New User?</button>
           </div>
-          <button className="btn btn-danger btn-block">Login</button>
+          <button className="btn btn-warning btn-block">Login</button>
         </form>
       </div>
 
       {showForgetForm && (
-        <form className='forget-container shadow-danger p-4 mt-3' style={{ maxWidth: '400px', borderRadius: '15px', boxShadow: '0 4px 8px rgba(255, 0, 0, 0.5)', border: '2px solid rgba(255, 0, 0, 0.5)', margin: '10px auto' }} onSubmit={ForgetSub} id='frgFrm'>
+        <form className='forget-container shadow p-4 mt-3' style={{ maxWidth: '400px', borderRadius: '15px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)', backgroundColor: 'rgba(0, 0, 0, 0.8)', border: '2px solid rgba(0, 0, 0, 0.5)', margin: '10px auto', color: '#fff' }} onSubmit={ForgetSub} id='frgFrm'>
           <div className="form-group mb-3">
             <label htmlFor="nameFrg" className="form-label">Username</label>
             <input className="form-control border-danger" type='text' id='nameFrg' autoComplete='username' required />
           </div>
           <div className='d-flex justify-content-between mb-3'>
-            <button type='button' className="btn btn-danger me-2" onClick={cancelForget}>Cancel</button>
-            <button className="btn btn-danger btn-block">Get Question</button>
+            <button type='button' className="btn btn-warning me-2" onClick={cancelForget}>Cancel</button>
+            <button className="btn btn-warning btn-block">Get Question</button>
           </div>
         </form>
       )}
 
       {showAnswerForm && (
-        <form className='forget-container shadow-danger p-4 mt-3' onSubmit={checkPsw} id='ansCheckFrm'>
+        <form className='forget-container shadow p-4 mt-3' onSubmit={checkPsw} id='ansCheckFrm' style={{ maxWidth: '400px', borderRadius: '15px', boxShadow: '8 4px 8px rgba(0, 0, 0, 0.5)', backgroundColor: 'rgba(0, 0, 0, 0.8)', border: '2px solid rgba(0, 0, 0, 0.5)', margin: '10px auto', color: '#fff' }}>
           <div className="form-group mb-3">
             <label htmlFor="QueAns" id='queLbl' className="form-label"></label>
             <input className="form-control border-danger" type='text' id='QueAns' autoComplete='username' required />
           </div>
-          <button className="btn btn-danger btn-block">Change Password</button>
+          <button className="btn btn-warning btn-block">Change Password</button>
         </form>
       )}
 
       {showUpdatePasswordForm && (
-        <form className='forget-container shadow-danger p-4 mt-3' onSubmit={UpdPsw} id='upPassword'>
+        <form className='forget-container shadow p-4 mt-3' onSubmit={UpdPsw} id='upPassword' style={{ maxWidth: '400px', borderRadius: '15px', boxShadow: '8 8px 8px rgba(0, 0, 0, 0.9)', backgroundColor: 'rgba(0, 0, 0, 0.8)', border: '2px solid rgba(0, 0, 0, 0.5)', margin: '10px auto', color: '#fff' }}>
           <div className="form-group mb-3">
             <label htmlFor="newPsw" className="form-label">Enter New Password:</label>
             <input className="form-control border-danger" type='password' id='newPsw' autoComplete='Password' required />
@@ -212,15 +221,15 @@ const Login = () => {
             <label htmlFor="newPswR" className="form-label">Enter New Password Again:</label>
             <input className="form-control border-danger" type='password' id='newPswR' autoComplete='newPassword' required />
           </div>
-          <button className="btn btn-danger btn-block">Set Password</button>
+          <button className="btn btn-warning btn-block">Set Password</button>
         </form>
       )}
 
-      <div className="alert-container alert alert-danger" id='uExists' style={{ display: "none" }}>
+      <div className="alert-container alert alert-warning" id='uExists' style={{ display: "none" }}>
         <p></p>
       </div>
 
-      <div className="alert-container alert alert-danger" id='vali' style={{ display: "none" }}>
+      <div className="alert-container alert alert-warning" id='vali' style={{ display: "none" }}>
         <p>Enter Valid Details</p>
       </div>
     </>

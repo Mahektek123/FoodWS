@@ -143,9 +143,9 @@ const FoodCard = (props) => {
                 className="card col-12 col-sm-6 col-lg-3 fade-in" 
                 id={props.Food_ID} 
                 key={props.Food_ID} 
-                style={{ width: "250px" }}
+                style={{ width: "250px"}}
             >
-                <img src={foodIMG} className="card-img-top" alt="Food" />
+                <img src={foodIMG} className="card-img-top" alt="Food" style={{marginTop:'5px'}} />
                 <div className="card-body">
                     <h5 className="card-title">{props.Food_Name}</h5>
                     <p className="card-text">{props.Food_Price}</p>

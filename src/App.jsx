@@ -1,7 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.js'
+import 'bootstrap/dist/js/bootstrap.bundle.js';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import About from './components/About'
 import Home from './components/Home'
 import Navbar from './components/Navbar';
@@ -10,7 +11,7 @@ import Regi from './components/Regi';
 import Profile from './components/Profile';
 import Order from './components/Order';
 import Footer from './components/Footer';
-import Info from './components/Info.jsx'
+import Info from './components/Info.jsx';
 
 function App() {
   return (

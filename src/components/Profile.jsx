@@ -157,35 +157,38 @@ const Profile = () => {
     };
 
     const containerStyle = {
-        padding: '10px 1px',
-        margin: '10px auto',
+        padding: '100px 1px',
+        margin: '20px auto',
         borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(255, 0, 0, 0.5)',
-        border: '2px solid rgba(255, 0, 0, 0.5)',
+        boxShadow: '8px 8px 8px rgba(0, 0, 0, 0.9)',
+        border: '2px solid rgba(0, 0, 0, 0.9)',
         transition: 'box-shadow 0.3s ease-in-out',
-        backgroundColor: '#fff',
-        maxWidth: '400px',
-    };
-
-    const handleMouseOver = (e) => {
-        e.currentTarget.style.boxShadow = '0 8px 16px rgba(255, 165, 0, 0.2)';
-    };
-
-    const handleMouseOut = (e) => {
-        e.currentTarget.style.boxShadow = '0 4px 8px rgba(255, 165, 0, 0.1)';
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',  // Light black background
+        color: '#fff', // White text color
+        maxWidth: '500px',
+        minHeight: '85vh'
     };
 
     const alertContainerStyle = {
         padding: '15px',
         margin: '20px auto',
         borderRadius: '15px',
-        boxShadow: '0 4px 8px rgba(255, 0, 0, 0.4)',
-        border: '1px solid rgba(255, 0, 0, 0.5)',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)',
+        border: '1px solid rgba(0, 0, 0, 0.5)',
         transition: 'opacity 0.3s ease-in-out',
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',  // Slightly darker black background
+        color: '#fff', // White text color
         maxWidth: '600px',
         opacity: showNameUpdate || showPswUpdate || showSecQueUpdate ? 1 : 0,
         visibility: showNameUpdate || showPswUpdate || showSecQueUpdate ? 'visible' : 'hidden',
+    };
+
+    const handleMouseOver = (e) => {
+        e.currentTarget.style.boxShadow = '4 8px 16px rgba(0, 0, 0, 0.8)';
+    };
+
+    const handleMouseOut = (e) => {
+        e.currentTarget.style.boxShadow = '8 8px 8px rgba(0, 0, 0, 0.9)';
     };
 
     return (
@@ -197,24 +200,23 @@ const Profile = () => {
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
             >
-
                 <div className="" id="Info">
                     <div>
                         <label htmlFor="DUName">User Name : </label>
-                        <input type="text" className="inputz" id="DUName" value={sessionStorage.getItem('UserName')} readOnly />
-                        <button className="btn btn-danger btn-block mt-2" onClick={() => setShowNameUpdate(true)}>Change</button>
+                        <input type="text" className="inputz form-control" id="DUName" value={sessionStorage.getItem('UserName')} readOnly />
+                        <button className="btn btn-warning btn-block mt-2" onClick={() => setShowNameUpdate(true)}>Change</button>
                     </div>
                     <br />
                     <div>
                         <label>Password : </label>
                         <input type="text" className="form-control w-50" value="********" readOnly />
-                        <button className="btn btn-danger btn-block mt-2" onClick={() => setShowPswUpdate(true)}>Change</button>
+                        <button className="btn btn-warning btn-block mt-2" onClick={() => setShowPswUpdate(true)}>Change</button>
                     </div>
                     <br />
                     <div>
                         <label id="QueSec">{sessionStorage.getItem('Que')}</label>
                         <input id="QueAns" type="text" value={sessionStorage.getItem('Ans')} className="form-control w-50" readOnly />
-                        <button className="btn btn-danger btn-block mt-2" onClick={() => setShowSecQueUpdate(true)}>Change</button>
+                        <button className="btn btn-warning btn-block mt-2" onClick={() => setShowSecQueUpdate(true)}>Change</button>
                     </div>
                 </div>
             </div>
@@ -230,8 +232,8 @@ const Profile = () => {
                             <label htmlFor="newName">Enter New Name : </label>
                             <input className="form-control" type="text" id="newName" value={newName} onChange={(e) => setNewName(e.target.value)} required />
                         </div>
-                        <button className="btn btn-danger btn-block mt-2" id="UpName">Update</button>
-                        <button className="btn btn-danger btn-block mt-2" onClick={() => setShowNameUpdate(false)}>Cancel</button>
+                        <button className="btn btn-warning btn-block mt-2" id="UpName">Update</button>
+                        <button className="btn btn-warning btn-block mt-2" onClick={() => setShowNameUpdate(false)}>Cancel</button>
                     </form>
                 </div>
             )}
@@ -251,8 +253,8 @@ const Profile = () => {
                             <label htmlFor="newPswR">Enter New Password Again : </label>
                             <input className="form-control" type="password" id="newPswR" value={newPswR} onChange={(e) => setNewPswR(e.target.value)} required />
                         </div>
-                        <button className="btn btn-danger btn-block mt-2" id="UpPsw">Update</button>
-                        <button className="btn btn-danger btn-block mt-2" onClick={() => setShowPswUpdate(false)}>Cancel</button>
+                        <button className="btn btn-warning btn-block mt-2" id="UpPsw">Update</button>
+                        <button className="btn btn-warning btn-block mt-2" onClick={() => setShowPswUpdate(false)}>Cancel</button>
                     </form>
                 </div>
             )}
@@ -272,14 +274,14 @@ const Profile = () => {
                             <label htmlFor="secAnsUp">Answer</label>
                             <input className="form-control" type="text" id="secAnsUp" value={secAnsUp} onChange={(e) => setSecAnsUp(e.target.value)} required />
                         </div>
-                        <button className="btn btn-danger btn-block mt-2" id="UpSecQue">Update</button>
-                        <button className="btn btn-danger btn-block mt-2" onClick={() => setShowSecQueUpdate(false)}>Cancel</button>
+                        <button className="btn btn-warning btn-block mt-2" id="UpSecQue">Update</button>
+                        <button className="btn btn-warning btn-block mt-2" onClick={() => setShowSecQueUpdate(false)}>Cancel</button>
                     </form>
                 </div>
             )}
 
             {warning && (
-                <div className="alert-container" id="warning">
+                <div className="alert-container" id="warning" style={{ ...alertContainerStyle, opacity: 1, visibility: 'visible' }}>
                     <p>{warning}</p>
                 </div>
             )}
