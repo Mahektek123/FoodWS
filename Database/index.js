@@ -45,7 +45,7 @@ const FoodSchema = new Schema({
         type: Number
     },
     Food_Price: {
-        type: Number
+        type: String
     },
     Food_Type: {
         type: String
@@ -58,8 +58,28 @@ const FoodSchema = new Schema({
     }
 }, { collection: 'foods' })
 
+const OrderSchema = new Schema({
+    UserName: {
+        type: String,
+        require: true
+    },
+    Food_ID: {
+        type: Number,
+        require: true
+    },
+    Payment_Method: {
+        type: String,
+        require: true
+    },
+    Time: {
+        type: Date,
+        require: true
+    }
+}, {collection: "placedOrder"})
+
 const User = mongoose.model('User', UserSchema)
 const Food = mongoose.model("Food", FoodSchema)
+const Order = mongoose.model("PlacedOrder", OrderSchema)
 
 app.post("/newUser", async (req, res) => {
     var UserName = req.body.name
@@ -260,6 +280,31 @@ app.post("/IncItemByOne", async (req,res)=> {
         }
     } catch (error) {
         return res.send({ "Error": error.message });
+    }
+})
+
+app.post("/CompleteOrder", async (req, res) => {
+    const UserName = req.body.uName
+    const Food_ID = req.body.food_ID
+    const Payment_Method = req.body.paymentMethod
+    const Time = req.body.Time
+
+    try {
+        const result = new Order({UserName, Food_ID, Payment_Method, Time})
+        const saveData = await result.save()
+        res.send({Message: "Order Placed...."})
+    } catch (error) {
+        res.send({Message: "There is Error"})
+    }
+})
+
+app.post("/EmptyCart", async (req,res) => {
+    const UserName = req.body.uName
+    try {
+        const emptyCart = await User.updateOne({UserName: UserName}, {$set: {Cart: []}})
+        res.send({Message: "Success"})
+    } catch (error) {
+        res.send({Message: error})
     }
 })
 

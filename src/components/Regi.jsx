@@ -71,14 +71,16 @@ const Regi = () => {
 
   return (
     <>
-         <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-6">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3 className="text-center">Registration</h3>
-                            </div>
-                            <div className="card-body">
+         <div className="container " style={{padding: '140px 1px',
+        margin: '20px auto',
+        borderRadius: '10px',
+        boxShadow: '8px 8px 8px rgba(0, 0, 0, 0.9)',
+        border: '2px solid rgba(0, 0, 0, 0.9)',
+        transition: 'box-shadow 0.3s ease-in-out',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        color: '#fff', 
+        maxWidth: '400px',
+        minHeight:"85vh" }}>
                                 <form onSubmit={sub}>
                                     <div className="form-group">
                                         <label htmlFor="name">Username</label>
@@ -100,21 +102,32 @@ const Regi = () => {
                                         <label htmlFor="secAns">Answer</label>
                                         <input className="form-control" type='text' id='secAns' autoComplete='current-password' required />
                                     </div>
-                                    <span onClick={divert} style={{ cursor: 'pointer', color: 'blue' }}>Already Have An Account?</span>
+                                    <span onClick={divert} style={{ cursor: 'pointer', color: 'rgb(92, 227, 245)' }}>Already Have An Account?</span>
                                     <br />
                                     <center>
-                                        <button id="btn" className="btn btn-primary btn-block">Register</button>
+                                        <button id="btn" className="btn btn-warning btn-block">Register</button>
                                     </center>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="alert-container" id='uExists' style={{ display: "none" }}>
+                <div className="alert-container" id='uExists' style={{display: 'none', padding: '10px 1px',
+        margin: '20px auto',
+        borderRadius: '10px',
+        boxShadow: '8px 8px 8px rgba(0, 0, 0, 0.9)',
+        border: '2px solid rgba(0, 0, 0, 0.9)',
+        transition: 'box-shadow 0.3s ease-in-out',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        color: '#fff' }}>
                     <p>User already Exists</p>
                 </div>
-                <div className="alert-container" id='vali' style={{ display: "none" }}>
-                    <p>Enter Valid Details</p>
+                <div className="alert-container" id='vali' style={{ display: 'none' ,padding: '10px 1px',
+        margin: '20px auto',
+        borderRadius: '10px',
+        boxShadow: '8px 8px 8px rgba(0, 0, 0, 0.9)',
+        border: '2px solid rgba(0, 0, 0, 0.9)',
+        transition: 'box-shadow 0.3s ease-in-out',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        color: '#fff', 
+        maxWidth: '400px', }}>
+                    <p>Username and password must be 8 character long</p>
                 </div>
             </div>
     </>
